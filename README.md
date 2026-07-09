@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MiniMall — 微型电商
 
-## Getting Started
+基于 **Next.js 16** 的全栈微型电商系统，支持商品浏览、用户认证、购物车、订单管理、会员等级、后台管理。
 
-First, run the development server:
+## 技术栈
+
+| 技术 | 版本 | 
+|------|------|
+| Next.js | 16.2.10 (App Router) |
+| React | 19.2 |
+| TypeScript | 5.6+ |
+| Tailwind CSS | 4.3 |
+| Prisma | 5.22 |
+| SQLite | 文件数据库 |
+| Auth.js v5 | 5.0.0-beta.31 |
+| Vitest | 2.1 |
+
+## 快速开始
+
+**环境要求：** Node.js >= 20.9.0
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npx prisma db push
+npm run db:seed    # 写入种子数据
+npm run dev        # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**测试账号：** `admin@minimall.com` / `admin123`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 功能
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- 🏠 **首页** — 精选商品 + 分类导航
+- 🛍️ **商品浏览** — 列表、搜索、分类筛选、详情
+- 🔑 **用户认证** — 注册、登录、JWT 会话
+- 🛒 **购物车** — 加入购物车、修改数量、删除
+- 📦 **订单管理** — 下单（模拟支付）、订单列表、订单详情
+- ⭐ **会员等级** — 星悦三级，累计消费自动升级，享受折扣
+- 📊 **后台管理** — 仪表盘、商品 CRUD、订单管理、分类管理
 
-## Learn More
+## 星悦会员
 
-To learn more about Next.js, take a look at the following resources:
+| 等级 | 累计消费 | 折扣 |
+|------|---------|------|
+| 普通会员 | < ¥800 | 无 |
+| ⭐ 星悦一级 | ≥ ¥800 | 9.8 折 |
+| ⭐⭐ 星悦二级 | ≥ ¥8,000 | 9 折 |
+| ⭐⭐⭐ 星悦三级 | ≥ ¥80,000 | 8.8 折 |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 项目结构
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+src/
+├── app/              # App Router 页面
+│   ├── admin/        # 后台管理
+│   ├── auth/         # 登录/注册
+│   ├── cart/         # 购物车
+│   ├── orders/       # 订单
+│   ├── products/     # 商品
+│   └── api/          # API 路由
+├── components/       # React 组件
+├── lib/              # 工具库 (db, auth, membership, utils)
+├── actions/          # Server Actions
+└── __tests__/        # 测试 (52 个)
+```
 
-## Deploy on Vercel
+## 命令
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run dev        # 开发服务器
+npm run build      # 生产构建
+npm run test       # 运行测试
+npm run db:seed    # 写入种子数据
+npx prisma studio  # 数据库管理界面
+```
