@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # MiniMall — 微型电商
 
 基于 **Next.js 16** 的全栈微型电商系统，支持商品浏览、用户认证、购物车、订单管理、会员等级、后台管理。
@@ -73,3 +74,6 @@ npm run test       # 运行测试
 npm run db:seed    # 写入种子数据
 npx prisma studio  # 数据库管理界面
 ```
+=======
+# donk-minimall
+>>>>>>> 428e9290d43a0f1f13413dd16fe32b7ea4654fab
